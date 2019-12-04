@@ -1,4 +1,8 @@
-class Stack<T> implements Collection<T> {
+import {List} from './List';
+import {Collection} from './Collection';
+import {NodeElem} from './NodeElem';
+
+export class Stack<T> implements Collection<T> {
 	protected _list: List<T> = new List();
 
 	public makeArray(): Array<T> {

@@ -1,4 +1,7 @@
-class List<T> extends BasicCollection<T> {
+import {BasicCollection} from './Collection';
+import {NodeElem} from './NodeElem';
+
+export class List<T> extends BasicCollection<T> {
 	constructor() {
 		super();
 		this.length = 0;

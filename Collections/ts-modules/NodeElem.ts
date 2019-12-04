@@ -1,4 +1,4 @@
-class NodeElem<ValueType> {
+export class NodeElem<ValueType> {
 	public next: NodeElem<ValueType>;
 	public prev: NodeElem<ValueType>;
 	public value: ValueType;

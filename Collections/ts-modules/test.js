@@ -1,26 +1,22 @@
-import {List} from './List';
-import {Stack} from './Stack';
-import {Queue} from './Queue';
-
-const listSample = new List<number>();
-
+"use strict";
+exports.__esModule = true;
+var List_1 = require("./List");
+var Stack_1 = require("./Stack");
+var Queue_1 = require("./Queue");
+var listSample = new List_1.List();
 listSample.addToBegin(23);
 listSample.addToBegin(34);
 listSample.addToEnd(555);
 listSample.addToBegin(11111);
 console.log(listSample.getLength());
 console.log(listSample.makeArray());
-
-const stackSample = new Stack<string>();
-
+var stackSample = new Stack_1.Stack();
 stackSample.add('a');
 stackSample.add('b');
 stackSample.add('c');
 console.log(stackSample.getLength());
 console.log(stackSample.makeArray());
-
-const queueSample = new Queue<string>();
-
+var queueSample = new Queue_1.Queue();
 queueSample.add('a');
 queueSample.add('b');
 queueSample.add('c');

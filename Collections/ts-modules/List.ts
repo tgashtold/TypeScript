@@ -20,7 +20,7 @@ class List<T> extends BasicCollection<T> {
 		return newNode;
 	}
 
-	public addToBegin(data: T) {
+	public addToBegin(data: T): NodeElem<T> {
 		const newNode: NodeElem<T> = new NodeElem<T>(data);
 
 		if (!this.length) {

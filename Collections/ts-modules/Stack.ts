@@ -5,7 +5,7 @@ class Stack<T> implements Collection<T> {
 		return this._list.makeArray();
 	}
 
-	public getLength() {
+	public getLength(): number {
 		return this._list.getLength();
 	}
 	

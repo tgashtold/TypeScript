@@ -8,6 +8,7 @@ class Stack<T> implements Collection<T> {
 	public getLength() {
 		return this._list.getLength();
 	}
+	
 	public add(data: T): NodeElem<T> {
 		return this._list.addToBegin(data);
 	}

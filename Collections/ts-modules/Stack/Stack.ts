@@ -3,13 +3,11 @@ import { IStack } from '../Stack/IStack';
 import { LinkedList } from '../LinkedList/LinkedList';
 
 export class Stack<T> extends BasicCollection<T> implements IStack<T> {
-	protected linkedList: LinkedList<T> = new LinkedList();
-
 	push(data: T): T {
-		return this.linkedList.addToBegin(data);
+		return this.linkedList.addToEnd(data);
 	}
 
 	pop(): T {
-		return this.linkedList.deleteFromBegin();
+		return this.linkedList.deleteFromEnd();
 	}
 }

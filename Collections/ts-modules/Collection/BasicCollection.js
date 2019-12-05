@@ -1,7 +1,9 @@
 "use strict";
 exports.__esModule = true;
+var LinkedList_1 = require("../LinkedList/LinkedList");
 var BasicCollection = /** @class */ (function () {
     function BasicCollection() {
+        this.linkedList = new LinkedList_1.LinkedList();
     }
     BasicCollection.prototype.getLength = function () {
         return this.linkedList.getLength();

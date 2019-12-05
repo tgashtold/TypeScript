@@ -20,6 +20,13 @@ stackSample.pop();
 console.log('Length: ' + stackSample.getLength());
 console.log(stackSample.makeArray());
 
+console.log('Delete all elements');
+stackSample.pop();
+stackSample.pop();
+stackSample.pop();
+console.log('Length: ' + stackSample.getLength());
+console.log(stackSample.makeArray());
+
 const queueSample = new Queue<string>();
 
 console.log('********Queue testing');
@@ -57,16 +64,11 @@ listSample.insert(0, 66);
 console.log('Length: ' + listSample.getLength());
 console.log(listSample.makeArray());
 
-console.log('Delete element with index 2');
-listSample.pop(2);
-console.log('Length: ' + listSample.getLength());
-console.log(listSample.makeArray());
-
 console.log('Get index of element equal to 3');
 console.log(listSample.index(3));
 
 console.log('Get index of element equal to 4, search from index 2 to 4');
-console.log(listSample.index(4, 2, 4));
+console.log(listSample.index(4, 2, 5));
 
 console.log('Sort the list');
 listSample.sort();

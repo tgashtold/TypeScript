@@ -3,7 +3,7 @@ import { NodeElem } from '../LinkedList/NodeElem';
 import { ICollection } from './ICollection';
 
 export abstract class BasicCollection<T> implements ICollection<T> {
-	protected linkedList: LinkedList<T>;
+	protected linkedList: LinkedList<T> = new LinkedList();
 
 	public getLength(): number {
 		return this.linkedList.getLength();

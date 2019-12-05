@@ -14,13 +14,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 var BasicCollection_1 = require("../Collection/BasicCollection");
-var LinkedList_1 = require("../LinkedList/LinkedList");
 var List = /** @class */ (function (_super) {
     __extends(List, _super);
     function List() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.linkedList = new LinkedList_1.LinkedList();
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     List.prototype.append = function (data) {
         return this.linkedList.addToEnd(data);
@@ -48,25 +45,6 @@ var List = /** @class */ (function (_super) {
             return nodeToAdd.value;
         }
     };
-    List.prototype.pop = function (index) {
-        var listLength = this.getLength();
-        if (index > listLength || index < 0 || !listLength) {
-            throw new Error('Indicated index is beyond list range');
-        }
-        else if (index === 0) {
-            return this.linkedList.deleteFromBegin();
-        }
-        else if (!index) {
-            return this.linkedList.deleteFromEnd();
-        }
-        else {
-            var nodeToDelete = this.getNodeByIndex(index);
-            nodeToDelete.next.prev = nodeToDelete.prev;
-            nodeToDelete.prev.next = nodeToDelete.next;
-            this.linkedList.setLength(--listLength);
-            return nodeToDelete.value;
-        }
-    };
     List.prototype.sort = function () {
         var listLength = this.getLength();
         for (var i = 0; i < listLength - 1; i++) {
@@ -81,9 +59,9 @@ var List = /** @class */ (function (_super) {
             }
         }
     };
-    List.prototype.index = function (requestedNodeValue, startIndex, endIndex) {
+    List.prototype.index = function (requestedValue, startIndex, endIndex) {
         var listLength = this.getLength();
-        var nodeValue = requestedNodeValue;
+        var nodeValue = requestedValue;
         var startLimit = startIndex;
         var endLimit = endIndex;
         if (startLimit > endLimit || endLimit == 0 || endLimit > listLength - 1 || startLimit < 0) {

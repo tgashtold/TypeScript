@@ -14,13 +14,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 var BasicCollection_1 = require("../Collection/BasicCollection");
-var LinkedList_1 = require("../LinkedList/LinkedList");
 var Queue = /** @class */ (function (_super) {
     __extends(Queue, _super);
     function Queue() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.linkedList = new LinkedList_1.LinkedList();
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     Queue.prototype.queue = function (data) {
         return this.linkedList.addToEnd(data);

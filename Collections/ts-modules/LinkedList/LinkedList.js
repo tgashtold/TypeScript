@@ -3,12 +3,14 @@ exports.__esModule = true;
 var NodeElem_1 = require("./NodeElem");
 var LinkedList = /** @class */ (function () {
     function LinkedList() {
+        this.lastNode = null;
+        this.firstNode = null;
         this.length = 0;
     }
     LinkedList.prototype.addToEnd = function (data) {
         var newNode = this.createNode(data);
         if (!this.length) {
-            this._addNodeToEmptyList(newNode);
+            this.addNodeToEmptyList(newNode);
         }
         else {
             newNode.prev = this.lastNode;
@@ -21,7 +23,7 @@ var LinkedList = /** @class */ (function () {
     LinkedList.prototype.addToBegin = function (data) {
         var newNode = this.createNode(data);
         if (!this.length) {
-            this._addNodeToEmptyList(newNode);
+            this.addNodeToEmptyList(newNode);
         }
         else {
             newNode.next = this.firstNode;
@@ -32,7 +34,10 @@ var LinkedList = /** @class */ (function () {
         return newNode.value;
     };
     LinkedList.prototype.deleteFromEnd = function () {
-        if (this.length) {
+        if (this.length === 1) {
+            return this.deleteLastNode();
+        }
+        if (this.length > 1) {
             var nodeToDelete = this.lastNode;
             this.lastNode.prev.next = null;
             this.lastNode = this.lastNode.prev;
@@ -42,6 +47,9 @@ var LinkedList = /** @class */ (function () {
         return null;
     };
     LinkedList.prototype.deleteFromBegin = function () {
+        if (this.length === 1) {
+            return this.deleteLastNode();
+        }
         if (this.length) {
             var nodeToDelete = this.firstNode;
             this.firstNode = nodeToDelete.next;
@@ -60,9 +68,15 @@ var LinkedList = /** @class */ (function () {
     LinkedList.prototype.createNode = function (data) {
         return new NodeElem_1.NodeElem(data);
     };
-    LinkedList.prototype._addNodeToEmptyList = function (nodeElem) {
+    LinkedList.prototype.addNodeToEmptyList = function (nodeElem) {
         this.lastNode = nodeElem;
         this.firstNode = nodeElem;
+    };
+    LinkedList.prototype.deleteLastNode = function () {
+        var deletedValue = this.firstNode.value;
+        this.firstNode = this.lastNode = null;
+        --this.length;
+        return deletedValue;
     };
     return LinkedList;
 }());

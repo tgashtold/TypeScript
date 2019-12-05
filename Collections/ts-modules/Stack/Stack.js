@@ -14,19 +14,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 var BasicCollection_1 = require("../Collection/BasicCollection");
-var LinkedList_1 = require("../LinkedList/LinkedList");
 var Stack = /** @class */ (function (_super) {
     __extends(Stack, _super);
     function Stack() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.linkedList = new LinkedList_1.LinkedList();
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     Stack.prototype.push = function (data) {
-        return this.linkedList.addToBegin(data);
+        return this.linkedList.addToEnd(data);
     };
     Stack.prototype.pop = function () {
-        return this.linkedList.deleteFromBegin();
+        return this.linkedList.deleteFromEnd();
     };
     return Stack;
 }(BasicCollection_1.BasicCollection));

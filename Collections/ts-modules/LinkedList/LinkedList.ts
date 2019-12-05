@@ -1,15 +1,15 @@
 import { NodeElem } from './NodeElem';
 
 export class LinkedList<T> {
-	public lastNode: NodeElem<T>;
-	public firstNode: NodeElem<T>;
+	public lastNode: NodeElem<T> | null = null;
+	public firstNode: NodeElem<T> | null = null;
 	protected length: number = 0;
 
 	public addToEnd(data: T): T {
 		const newNode: NodeElem<T> = this.createNode(data);
 
 		if (!this.length) {
-			this._addNodeToEmptyList(newNode);
+			this.addNodeToEmptyList(newNode);
 		} else {
 			newNode.prev = this.lastNode;
 			this.lastNode.next = newNode;
@@ -25,7 +25,7 @@ export class LinkedList<T> {
 		const newNode: NodeElem<T> = this.createNode(data);
 
 		if (!this.length) {
-			this._addNodeToEmptyList(newNode);
+			this.addNodeToEmptyList(newNode);
 		} else {
 			newNode.next = this.firstNode;
 			this.firstNode.prev = newNode;
@@ -38,7 +38,11 @@ export class LinkedList<T> {
 	}
 
 	public deleteFromEnd(): T {
-		if (this.length) {
+		if (this.length === 1) {
+			return this.deleteLastNode();
+		}
+
+		if (this.length > 1) {
 			const nodeToDelete: NodeElem<T> = this.lastNode;
 
 			this.lastNode.prev.next = null;
@@ -53,6 +57,10 @@ export class LinkedList<T> {
 	}
 
 	public deleteFromBegin(): T {
+		if (this.length === 1) {
+			return this.deleteLastNode();
+		}
+
 		if (this.length) {
 			const nodeToDelete: NodeElem<T> = this.firstNode;
 
@@ -75,12 +83,22 @@ export class LinkedList<T> {
 		this.length = length;
 	}
 
-	public createNode(data: T) {
+	public createNode(data: T): NodeElem<T> {
 		return new NodeElem<T>(data);
 	}
 
-	protected _addNodeToEmptyList(nodeElem: NodeElem<T>): void {
+	protected addNodeToEmptyList(nodeElem: NodeElem<T>): void {
 		this.lastNode = nodeElem;
 		this.firstNode = nodeElem;
+	}
+
+	protected deleteLastNode(): T {
+		const deletedValue: T = this.firstNode.value;
+
+		this.firstNode = this.lastNode = null;
+
+		--this.length;
+
+		return deletedValue;
 	}
 }

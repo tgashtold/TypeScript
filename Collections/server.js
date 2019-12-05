@@ -5,7 +5,7 @@ http.createServer(function(request, response){
      
     var filePath = request.url.substr(1);
    
-    if(filePath == "") filePath ="index.html";
+    if(filePath == "") filePath ="./index.html";
     fs.readFile(filePath, function(error, data){
                   
         if(error){ 

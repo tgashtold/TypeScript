@@ -21,16 +21,16 @@ treeSample.add(15);
 treeSample.add(16);
 console.log(treeSample);
 
-function findNodeTest1(treeNode: TreeNode<number>): boolean {
-    return treeNode.value > 10;
+function findNodeTest1(value: number): boolean {
+    return value > 10;
 }
 
-function findNodeTest2(treeNode: TreeNode<number>): boolean {
-    return treeNode.value === 2;
+function findNodeTest2(value: number): boolean {
+    return value === 2;
 }
 
-function findNodeTest3(treeNode: TreeNode<number>): void {
-    console.log(treeNode.value);
+function findNodeTest3(value: number): void {
+    console.log(value);
 }
 
 console.log('*******Nodes searching order (in depth)');

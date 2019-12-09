@@ -17,6 +17,6 @@ http.createServer(function(request, response){
         }
         return;
     })
-}).listen(3000, function(){
-    console.log("Сервер запущен по адресу http://localhost:3000/");
+}).listen(5000, function(){
+    console.log("Сервер запущен по адресу http://localhost:5000/");
 });

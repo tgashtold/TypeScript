@@ -24,8 +24,8 @@ export class Tree<T> {
     public delete(value: T): TreeNode<T> | null {
         if (!this.root) return null;
 
-        const callBack: Function = (treeNode: TreeNode<T>): boolean => {
-            return treeNode.value === value;
+        const callBack: Function = (treeNodeValue: T): boolean => {
+            return treeNodeValue === value;
         };
         const nodeToDelete: TreeNode<T> | null = this.search(callBack);
 
@@ -62,7 +62,7 @@ export class Tree<T> {
     ): Array<TreeNode<T>> | null {
         let result: Array<TreeNode<T>> = resultArr;
 
-        if (callback(startNode)) {
+        if (callback(startNode.value)) {
             result.push(startNode);
         } else {
             if (!startNode.children.length) return;
@@ -78,7 +78,7 @@ export class Tree<T> {
     protected searchInDepth(callback: Function, startNode: TreeNode<T>): TreeNode<T> | null {
         let result: TreeNode<T>;
 
-        if (callback(startNode)) {
+        if (callback(startNode.value)) {
             result = startNode;
         } else {
             if (!startNode.children.length) return;

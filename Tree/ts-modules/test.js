@@ -20,14 +20,14 @@ treeSample.add(14);
 treeSample.add(15);
 treeSample.add(16);
 console.log(treeSample);
-function findNodeTest1(treeNode) {
-    return treeNode.value > 10;
+function findNodeTest1(value) {
+    return value > 10;
 }
-function findNodeTest2(treeNode) {
-    return treeNode.value === 2;
+function findNodeTest2(value) {
+    return value === 2;
 }
-function findNodeTest3(treeNode) {
-    console.log(treeNode.value);
+function findNodeTest3(value) {
+    console.log(value);
 }
 console.log('*******Nodes searching order (in depth)');
 console.log(treeSample.search(findNodeTest3));

@@ -20,8 +20,8 @@ var Tree = /** @class */ (function () {
     Tree.prototype["delete"] = function (value) {
         if (!this.root)
             return null;
-        var callBack = function (treeNode) {
-            return treeNode.value === value;
+        var callBack = function (treeNodeValue) {
+            return treeNodeValue === value;
         };
         var nodeToDelete = this.search(callBack);
         if (nodeToDelete) {
@@ -47,7 +47,7 @@ var Tree = /** @class */ (function () {
     };
     Tree.prototype.searchInDepthAll = function (callback, startNode, resultArr) {
         var result = resultArr;
-        if (callback(startNode)) {
+        if (callback(startNode.value)) {
             result.push(startNode);
         }
         else {
@@ -61,7 +61,7 @@ var Tree = /** @class */ (function () {
     };
     Tree.prototype.searchInDepth = function (callback, startNode) {
         var result;
-        if (callback(startNode)) {
+        if (callback(startNode.value)) {
             result = startNode;
         }
         else {

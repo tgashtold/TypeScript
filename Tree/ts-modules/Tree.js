@@ -20,10 +20,11 @@ var Tree = /** @class */ (function () {
     Tree.prototype["delete"] = function (value) {
         if (!this.root)
             return null;
-        var callBack = function (treeNodeValue) {
-            return treeNodeValue === value;
-        };
-        var nodeToDelete = this.search(callBack);
+        var nodeToDelete = !this.root
+            ? null
+            : this.searchInDepth(function (treeNodeValue) {
+                return treeNodeValue === value;
+            }, this.root);
         if (nodeToDelete) {
             if (!nodeToDelete.parent) {
                 this.root = null;
@@ -32,18 +33,21 @@ var Tree = /** @class */ (function () {
                 nodeToDelete.parent.children = nodeToDelete.parent.children.filter(function (child) { return child.value != nodeToDelete.value; });
             }
         }
-        return nodeToDelete || null;
+        return nodeToDelete.value || null;
     };
     Tree.prototype.search = function (callback) {
         if (!this.root)
             return null;
-        return this.searchInDepth(callback, this.root);
+        var resultNode = this.searchInDepth(callback, this.root);
+        return resultNode ? resultNode.value : null;
     };
     Tree.prototype.searchAllMatches = function (callback) {
-        var resultArr = [];
+        var resultNodesArr = [];
+        var resultValueArr = [];
         if (!this.root)
-            return resultArr;
-        return this.searchInDepthAll(callback, this.root, resultArr);
+            return resultValueArr;
+        resultValueArr = this.searchInDepthAll(callback, this.root, resultNodesArr).map(function (treeNode) { return treeNode.value; });
+        return resultValueArr;
     };
     Tree.prototype.searchInDepthAll = function (callback, startNode, resultArr) {
         var result = resultArr;
